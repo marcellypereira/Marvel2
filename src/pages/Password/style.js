@@ -54,47 +54,49 @@ export default StyleSheet.create({
     color: '#fff',
     fontSize: 40,
     marginTop: '12%',
-    maxWidth: 270,
+    maxWidth: 260,
   },
   subTitle: {
     alignSelf: 'center',
     textAlign: 'center',
     color: '#A4A4A4',
-    maxWidth: 280,
+    maxWidth: 290,
     marginTop: '2%',
+  },
+  form: {
+    marginBottom: '10%',
   },
   label: {
     color: '#A4A4A4',
-    marginTop: '7%',
-    marginBottom: '4%',
-    marginLeft: '6%',
+    marginTop: '6%',
   },
-  codeContainer: {
+  labelContainer: {
+    borderWidth: 0.5,
+    borderRadius: 8,
+    borderColor: '#696969',
+    paddingHorizontal: 10,
+    marginTop: 10,
+    width: 330,
+    height: 50,
+  },
+  inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-around',
+    height: '100%',
   },
-  code: {
-    borderWidth: 1,
-    borderColor: '#A4A4A4',
-    borderRadius: 8,
-    width: 50,
-    height: 50,
-    textAlign: 'center',
+  input: {
+    color: '#FFF',
+    flex: 1,
+  },
+  icon: {
     color: '#A4A4A4',
-    fontSize: 18,
-    fontWeight: 'bold',
+    marginRight: '3%',
   },
-  codeGradient: {
-    borderRadius: 8,
-  },
-  resendCode: {
-    alignItems: 'flex-end',
-    marginRight: '5%',
-    marginTop: '5%',
-    marginBottom: '8%',
-  },
-  CodeText: {
-    color: '#A4A4A4',
+  errorText: {
+    position: 'absolute',
+    right: 3,
+    top: '100%',
+    color: '#ED1D2F',
+    fontSize: 12,
   },
 });

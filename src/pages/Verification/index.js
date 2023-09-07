@@ -1,18 +1,63 @@
-import React, { useState, useRef, createRef } from 'react';
-import { View, Image, Text, ScrollView, TextInput } from 'react-native';
+import React, { useState, useEffect, useRef, createRef } from 'react';
+import {
+  View,
+  Image,
+  Text,
+  ScrollView,
+  TextInput,
+  TouchableOpacity,
+} from 'react-native';
 import GradientButton from '../../components/GradientButton';
 import styles from './style';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
+import * as Notifications from 'expo-notifications';
 
 export default function Verification() {
   const numFields = 4;
   const [verificationCodes, setVerificationCodes] = useState(
     Array(numFields).fill(''),
   );
-
+  const [timer, setTimer] = useState(30);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const [isTimerVisible, setIsTimerVisible] = useState(false);
+  const [notificationSent, setNotificationSent] = useState(false);
   const inputRefs = useRef(verificationCodes.map(() => createRef()));
   const navigation = useNavigation();
+
+  useEffect(() => {
+    Notifications.setNotificationHandler({
+      handleNotification: async () => ({
+        shouldShowAlert: true,
+        shouldPlaySound: false,
+        shouldSetBadge: false,
+      }),
+    });
+
+    if (!notificationSent) {
+      const newCode = generateRandomCode();
+      Notifications.scheduleNotificationAsync({
+        content: {
+          title: 'Seu código de Verificação',
+          body: newCode,
+        },
+        trigger: null,
+      });
+      setNotificationSent(true);
+    }
+  }, [notificationSent]);
+
+  useEffect(() => {
+    if (timer > 0 && isTimerVisible) {
+      const intervalId = setInterval(() => {
+        setTimer((prevTimer) => prevTimer - 1);
+      }, 1000);
+
+      return () => {
+        clearInterval(intervalId);
+      };
+    }
+  }, [timer, isTimerVisible]);
 
   const handleCodeChange = (index, code) => {
     const updatedCodes = [...verificationCodes];
@@ -26,7 +71,40 @@ export default function Verification() {
   };
 
   const handleSendCode = () => {
-    navigation.navigate('Connect');
+    const newCode = generateRandomCode();
+    Notifications.scheduleNotificationAsync({
+      content: {
+        title: 'Seu código de Verificação',
+        body: newCode,
+      },
+      trigger: null,
+    });
+
+    setIsButtonDisabled(true);
+    setTimer(30);
+    setIsTimerVisible(true);
+
+    const intervalId = setInterval(() => {
+      setTimer((prevTimer) => prevTimer - 1);
+    }, 1000);
+
+    setTimeout(() => {
+      setIsButtonDisabled(false);
+      setIsTimerVisible(false);
+      clearInterval(intervalId);
+    }, 30000);
+  };
+
+  const handleVerifyCode = () => {
+    const isAllFieldsFilled = verificationCodes.every((code) => code !== '');
+    if (isAllFieldsFilled) {
+      navigation.navigate('Password'); // Substitua 'Password' pelo nome correto da tela de senha
+    }
+  };
+
+  const generateRandomCode = () => {
+    const code = Math.floor(1000 + Math.random() * 9000).toString();
+    return code;
   };
 
   return (
@@ -55,7 +133,9 @@ export default function Verification() {
           />
         </View>
         <View style={styles.overlayContainer}>
-          <ScrollView>
+          <ScrollView
+            showsVerticalScrollIndicator={false}
+          >
             <View style={styles.overlayContent}>
               <View style={styles.viewTitle}>
                 <Text style={styles.title}>Verificação de identidade</Text>
@@ -85,11 +165,21 @@ export default function Verification() {
                     </LinearGradient>
                   ))}
                 </View>
+                <TouchableOpacity
+                  onPress={handleSendCode}
+                  disabled={isButtonDisabled}
+                  style={styles.resendCode}
+                >
+                  <Text style={styles.CodeText}>
+                    Reenviar código{' '}
+                    {isTimerVisible && <Text>{timer} segundos</Text>}
+                  </Text>
+                </TouchableOpacity>
                 <GradientButton
-                  title="Enviar código"
+                  title="verificar código"
                   colors={['#ED1D2F', '#BF2EB9']}
                   style={styles.inputRegister}
-                  onPress={handleSendCode}
+                  onPress={handleVerifyCode}
                 />
               </View>
             </View>

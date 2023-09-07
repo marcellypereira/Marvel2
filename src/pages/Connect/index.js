@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -7,8 +7,7 @@ import {
   ScrollView,
   TextInput,
 } from 'react-native';
-import { AntDesign, Feather } from '@expo/vector-icons';
-import { Ionicons } from '@expo/vector-icons';
+import { AntDesign, Feather, Ionicons } from '@expo/vector-icons';
 import GradientButton from '../../components/GradientButton';
 import { LinearGradient } from 'expo-linear-gradient';
 import styles from './style';
@@ -25,6 +24,18 @@ export default function Connect() {
   const [passwordIconColor, setPasswordIconColor] = useState('#A4A4A4');
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
+  const [storedPassword, setStoredPassword] = useState('');
+
+  useEffect(() => {
+    const fetchStoredPassword = async () => {
+      const newPassword = await AsyncStorage.getItem('novaSenha');
+      if (newPassword) {
+        setStoredPassword(newPassword);
+      }
+    };
+
+    fetchStoredPassword();
+  }, []);
 
   const handlePress = () => {
     navigation.navigate('Register');
@@ -33,21 +44,26 @@ export default function Connect() {
   const handlePressForgort = () => {
     navigation.navigate('Forgot');
   };
-
   const handleLogin = async () => {
-    const registeredUserData = await AsyncStorage.getItem('registeredUser');
-    if (registeredUserData) {
-      const { email: registeredEmail, password: registeredPassword } =
-        JSON.parse(registeredUserData);
+    const registeredPassword = await AsyncStorage.getItem('registeredPassword');
 
-      if (email === registeredEmail && password === registeredPassword) {
-        navigation.navigate('Home');
-      } else {
-        setEmailError(true);
-        setPasswordError(true);
-      }
+    if (password === registeredPassword) {
+      navigation.navigate('Home');
+    } else {
+      setPasswordError(true);
     }
   };
+
+  useEffect(() => {
+    const fetchStoredPassword = async () => {
+      const newPassword = await AsyncStorage.getItem('novaSenha');
+      if (newPassword) {
+        setStoredPassword(newPassword);
+      }
+    };
+
+    fetchStoredPassword();
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -76,7 +92,7 @@ export default function Connect() {
         </View>
 
         <View style={styles.overlayContainer}>
-          <ScrollView>
+          <ScrollView showsHorizontalScrollIndicator={false}>
             <View style={styles.overlayContent}>
               <View style={styles.viewContainer}>
                 <View style={styles.viewTitle}>
@@ -151,7 +167,7 @@ export default function Connect() {
                           />
                           <TextInput
                             style={styles.input}
-                            placeholder="Senha"
+                            placeholder="senha"
                             placeholderTextColor="#A4A4A4"
                             secureTextEntry={!passwordVisible}
                             onChangeText={(text) => {
@@ -198,7 +214,7 @@ export default function Connect() {
                   </TouchableOpacity>
                 </View>
                 <GradientButton
-                  title="Entrar"
+                  title="entrar"
                   colors={['#ED1D2F', '#BF2EB9']}
                   onPress={handleLogin}
                 />
@@ -276,7 +292,7 @@ export default function Connect() {
                   </LinearGradient>
                 </View>
                 <GradientButton
-                  title="Cadastrar"
+                  title="cadastrar"
                   colors={['#ED1D2F', '#BF2EB9']}
                   onPress={handlePress}
                 />

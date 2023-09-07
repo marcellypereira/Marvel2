@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
-import { View, Text, Image, ScrollView, TextInput } from 'react-native';
-import { AntDesign, Feather } from '@expo/vector-icons';
+import {
+  View,
+  Text,
+  Image,
+  ScrollView,
+  TextInput,
+  TouchableOpacity,
+} from 'react-native';
+import { AntDesign, Feather, Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import GradientButton from '../../components/GradientButton';
 import styles from './style';
@@ -13,7 +20,7 @@ export default function Register() {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-
+  const [passwordVisible, setPasswordVisible] = useState(false);
   const [isEmailValid, setEmailValid] = useState(true);
   const [isNameValid, setNameValid] = useState(true);
   const [isPasswordValid, setPasswordValid] = useState(true);
@@ -63,6 +70,7 @@ export default function Register() {
       };
 
       await AsyncStorage.setItem('registeredUser', JSON.stringify(userData));
+      await AsyncStorage.setItem('registeredPassword', password);
 
       navigation.navigate('Connect');
     }
@@ -94,7 +102,7 @@ export default function Register() {
           />
         </View>
         <View style={styles.overlayContainer}>
-          <ScrollView>
+          <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.overlayContent}>
               <View style={styles.viewTitle}>
                 <Text style={styles.title}>Cadastro</Text>
@@ -220,7 +228,7 @@ export default function Register() {
                         />
                         <TextInput
                           style={styles.input}
-                          placeholder="Senha"
+                          placeholder="senha"
                           placeholderTextColor="#A4A4A4"
                           onChangeText={validatePassword}
                           onFocus={() => handleInputFocus('password')}
@@ -228,6 +236,20 @@ export default function Register() {
                           value={password}
                           secureTextEntry
                         />
+                        <TouchableOpacity
+                          onPress={() => setPasswordVisible(!passwordVisible)}
+                          style={styles.passwordToggleIcon}
+                        >
+                          <Ionicons
+                            name={
+                              passwordVisible
+                                ? 'md-eye-outline'
+                                : 'md-eye-off-outline'
+                            }
+                            size={24}
+                            style={styles.icon}
+                          />
+                        </TouchableOpacity>
                         {!isPasswordValid && focusedInput === 'password' && (
                           <Text style={styles.invalidMessage}>
                             Senha inválida
@@ -267,7 +289,7 @@ export default function Register() {
                         />
                         <TextInput
                           style={styles.input}
-                          placeholder="Confirmação da Senha"
+                          placeholder="confirmação da Senha"
                           placeholderTextColor="#A4A4A4"
                           onChangeText={validatePasswordMatch}
                           onFocus={() => handleInputFocus('confirmPassword')}
@@ -275,6 +297,20 @@ export default function Register() {
                           value={confirmPassword}
                           secureTextEntry
                         />
+                        <TouchableOpacity
+                          onPress={() => setPasswordVisible(!passwordVisible)}
+                          style={styles.passwordToggleIcon}
+                        >
+                          <Ionicons
+                            name={
+                              passwordVisible
+                                ? 'md-eye-outline'
+                                : 'md-eye-off-outline'
+                            }
+                            size={24}
+                            style={styles.icon}
+                          />
+                        </TouchableOpacity>
                         {!isPasswordMatch &&
                           focusedInput === 'confirmPassword' && (
                             <Text style={styles.invalidMessage}>
@@ -286,7 +322,7 @@ export default function Register() {
                   </View>
                 </View>
                 <GradientButton
-                  title="Cadastrar"
+                  title="cadastrar"
                   colors={['#ED1D2F', '#BF2EB9']}
                   onPress={handleRegister}
                 />

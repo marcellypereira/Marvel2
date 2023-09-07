@@ -6,7 +6,6 @@ import { getComics } from '../../components/ApiJs';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import styles from './style';
 
-
 export default function ItemModal() {
   const route = useRoute();
   const navigation = useNavigation();
@@ -92,7 +91,7 @@ export default function ItemModal() {
                   <Text style={styles.txtData}>2024</Text>
                   <View style={styles.timelineContainer}>
                     <Text style={styles.txtTimelineOne}>
-                      priemira aparição do personagem
+                      primeira aparição do personagem
                     </Text>
                   </View>
                 </View>
@@ -102,7 +101,7 @@ export default function ItemModal() {
                   <Text style={styles.txtData}>2054</Text>
                   <View style={styles.timelineContainer}>
                     <Text style={styles.txtTimelineTwo}>
-                      ultima aparição do personagem{' '}
+                      última aparição do personagem{' '}
                     </Text>
                   </View>
                 </View>
@@ -116,6 +115,7 @@ export default function ItemModal() {
               horizontal
               showsHorizontalScrollIndicator={false}
               style={styles.horizontalScrollView}
+              showsVerticalScrollIndicator={false}
             >
               {comics.map((item) => (
                 <TouchableOpacity

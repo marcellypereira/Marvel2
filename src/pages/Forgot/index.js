@@ -14,6 +14,10 @@ export default function Forgot() {
 
   const navigation = useNavigation();
 
+  const handlePressVerification = () => {
+    navigation.navigate('Verification');
+  };
+
   const validateEmail = (email) => {
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     return emailRegex.test(email);
@@ -30,14 +34,6 @@ export default function Forgot() {
 
   const handleInputBlur = () => {
     setIsFocused(false);
-  };
-
-  const handleButtonClick = () => {
-    setButtonClicked(true);
-
-    navigation.navigate('Verification', {
-      verificationMessage: `Verification code sent to: ${email}`,
-    });
   };
 
   return (
@@ -67,7 +63,9 @@ export default function Forgot() {
         </View>
 
         <View style={styles.overlayContainer}>
-          <ScrollView>
+          <ScrollView
+            showsVerticalScrollIndicator={false}
+          >
             <View style={styles.overlayContent}>
               <View style={styles.viewTitle}>
                 <Text style={styles.title}>Esqueci minha senha</Text>
@@ -118,6 +116,7 @@ export default function Forgot() {
                             onChangeText={handleEmailChange}
                             onFocus={handleInputFocus}
                             onBlur={handleInputBlur}
+                            autoFocus
                           />
                         </View>
                       </LinearGradient>
@@ -132,10 +131,10 @@ export default function Forgot() {
                   </View>
                 </View>
                 <GradientButton
-                  title="Enviar código"
+                  title="enviar código"
                   colors={['#ED1D2F', '#BF2EB9']}
                   style={styles.inputRegister}
-                  onPress={handleButtonClick}
+                  onPress={handlePressVerification}
                 />
               </View>
             </View>
