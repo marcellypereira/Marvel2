@@ -1,17 +1,30 @@
-<p align="center">
-  <h3 align="center">MARVEL</h3>
 
-<p align="center">
+  <h3 align="center">MARVEL</h3>
+  <p align="center">
     Este aplicativo foi desenvolvido para um teste.
     <br />
     <br />
   </p>
 </p>
 
-<p align="center">
- 
-  
-</p>
+<div align="center">
+  <table>
+    <tr>
+      <td><img src="https://github.com/marcellypereira/Marvel2/assets/116754560/cd13129b-c1ee-4038-80af-512f2e6bd451" alt="Logo" /></td>
+      <td><img src="https://github.com/marcellypereira/Marvel2/assets/116754560/b1d6d20a-cf91-4fd9-aed9-17c594e73154" alt="Logo" /></td>
+       <td><img src="https://github.com/marcellypereira/Marvel2/assets/116754560/36329ed5-2e09-464f-83d8-b8f8ddc7654d" alt="Logo" /></td>
+      <td><img src="https://github.com/marcellypereira/Marvel2/assets/116754560/5c2fee8f-0a72-4bbb-970b-28d0e78a96ba" alt="Logo" /></td>
+      <td><img src="https://github.com/marcellypereira/Marvel2/assets/116754560/e933668f-4798-4d03-96de-4337d4a95c58" alt="Logo" /></td>
+     
+ </tr>
+  </table>
+</div>
+
+
+
+
+
+
 
 <!-- TABLE OF CONTENTS -->
 ## 🗂 Índice
