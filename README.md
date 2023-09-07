@@ -16,7 +16,7 @@
 <!-- TABLE OF CONTENTS -->
 ## 🗂 Índice
 
-* [Sobre o projeto](#book-about-the-project)
+* [Sobre o projeto](#book-sobre-o-projeto)
   * [Tecnologias](#computer-technologies)
   * [Layout](#art-layout)
 * [Instalação](#bricks-installation)
