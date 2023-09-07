@@ -2,10 +2,6 @@
   <h3 align="center">MARVEL</h3>
 
 <p align="center">
-  <img src="https://img.shields.io/static/v1?label=Lincense&message=MIT&color=0000ff " alt="License" />
-</p>
-
-<p align="center">
     Este aplicativo foi desenvolvido para um teste.
     <br />
     <br />
