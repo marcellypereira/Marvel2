@@ -17,11 +17,11 @@
 ## 🗂 Índice
 
 * [Sobre o projeto](#book-sobre-o-projeto)
-  * [Tecnologias](#computer-technologies)
+  * [Tecnologias](#computer-technologias)
   * [Layout](#art-layout)
-* [Instalação](#bricks-installation)
+* [Instalação](#bricks-instalação)
   * [Requisitos](#construction-requirements)
-  * [Instalação de dependências](#construction-installing-dependencies)
+  * [Instalação de dependências](#construction-instalando-dependencias)
   * [Running](#arrow_forward-running)
 
 ## :book: Sobre o projeto
@@ -29,7 +29,7 @@
 
 Este projeto representa um teste de uma aplicação que utiliza React Native para consumir dados da API da Marvel, proporcionando uma experiência centrada no universo Marvel.
 
-### :computer: Technologies
+### :computer: Technologias
 
 * [Javascript](https://www.javascript.com/)
 * [Node.js](https://nodejs.org/en/)
