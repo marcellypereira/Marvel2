@@ -21,11 +21,6 @@
 </div>
 
 
-
-
-
-
-
 <!-- TABLE OF CONTENTS -->
 ## 🗂 Índice
 
@@ -68,7 +63,7 @@ ESte projeto usa [Node.js](https://nodejs.org/en/) e [npm](https://www.npmjs.com
 Clone este repositório do projeto:
 ```bash
 
-$ git clone https://github.com/pierguinzani/nta-call.git
+$ git clone https://github.com/marcellypereira/Marvel2.git
 
 # Enter in `marvel` folder:
 
