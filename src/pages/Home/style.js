@@ -148,4 +148,8 @@ export default StyleSheet.create({
     fontSize: 15,
     fontWeight: '300',
   },
+  noResultsMessage: {
+    color: '#000',
+    alignSelf: 'center',
+  },
 });

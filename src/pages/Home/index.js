@@ -20,6 +20,7 @@ import {
 } from '../../components/ApiJs';
 import Svg, { Path, Defs, LinearGradient, Stop } from 'react-native-svg';
 import styles from './style';
+import DefaltImg from '../../../assets/capaMarvel.png';
 
 export default function Home() {
   const navigation = useNavigation();
@@ -31,6 +32,7 @@ export default function Home() {
   const [searchData, setSearchData] = useState({});
   const [selectedItem, setSelectedItem] = useState(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [noResults, setNoResults] = useState(false);
 
   const fetchData = async () => {
     try {
@@ -60,6 +62,13 @@ export default function Home() {
       setSearchData({
         characters: results[0],
       });
+
+      if (results[0].length === 0) {
+        setNoResults(true);
+      } else {
+        setNoResults(false);
+      }
+
       setSelectedItem(null);
     } catch (error) {
       console.error('Error searching:', error);
@@ -74,6 +83,18 @@ export default function Home() {
   const fecharModal = () => {
     setIsModalVisible(false);
   };
+
+  const formatImage = (item) => {
+    console.log(item.thumbnail);
+    return `${item.thumbnail.path}.${item.thumbnail.extension}`;
+  };
+
+  const isNotAvaliable = (path) => {
+    return (
+      path === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available'
+    );
+  };
+
 
   return (
     <View style={styles.container}>
@@ -132,7 +153,12 @@ export default function Home() {
                     </View>
 
                     <View style={styles.listaAll}>
-                      {searchData.characters && (
+                      {searchData.characters &&
+                      searchData.characters.length === 0 ? (
+                        <Text style={styles.noResultsMessage}>
+                          Nenhum resultado encontrado
+                        </Text>
+                      ) : (
                         <FlatList
                           data={searchData.characters}
                           keyExtractor={(character) => character.id.toString()}
@@ -146,12 +172,19 @@ export default function Home() {
                               }
                             >
                               <View style={styles.containerImgIcon}>
-                                <Image
-                                  style={styles.characterImage}
-                                  source={{
-                                    uri: `${character.thumbnail.path}.${character.thumbnail.extension}`,
-                                  }}
-                                />
+                                {isNotAvaliable(character.thumbnail.path) ? (
+                                  <Image
+                                    style={styles.characterImage}
+                                    source={DefaltImg}
+                                  />
+                                ) : (
+                                  <Image
+                                    style={styles.characterImage}
+                                    source={{
+                                      uri: `${character.thumbnail.path}.${character.thumbnail.extension}`,
+                                    }}
+                                  />
+                                )}
                                 <View style={styles.viewNameDresc}>
                                   <Text style={styles.characterName}>
                                     {character.name}
@@ -209,12 +242,16 @@ export default function Home() {
               >
                 <View key={item.id} style={styles.itemContainer}>
                   <View style={styles.imageContainer}>
-                    <Image
-                      style={styles.image}
-                      source={{
-                        uri: `${item.thumbnail.path}.${item.thumbnail.extension}`,
-                      }}
-                    />
+                    {isNotAvaliable(item.thumbnail.path) ? (
+                      <Image style={styles.image} source={DefaltImg} />
+                    ) : (
+                      <Image
+                        style={styles.image}
+                        source={{
+                          uri: `${item.thumbnail.path}.${item.thumbnail.extension}`,
+                        }}
+                      />
+                    )}
                     <View style={styles.gradientOverlay}></View>
                     <Text
                       style={styles.nameItems}
@@ -242,12 +279,17 @@ export default function Home() {
               >
                 <View key={item.id} style={styles.itemContainer}>
                   <View style={styles.imageContainer}>
-                    <Image
-                      style={styles.image}
-                      source={{
-                        uri: `${item.thumbnail.path}.${item.thumbnail.extension}`,
-                      }}
-                    />
+                    {isNotAvaliable(item.thumbnail.path) ? (
+                      <Image style={styles.image} source={DefaltImg} />
+                    ) : (
+                      <Image
+                        style={styles.image}
+                        source={{
+                          uri: `${item.thumbnail.path}.${item.thumbnail.extension}`,
+                        }}
+                      />
+                    )}
+
                     <View style={styles.gradientOverlay}></View>
                     <Text
                       style={styles.nameItems}
@@ -275,12 +317,16 @@ export default function Home() {
               >
                 <View key={item.id} style={styles.itemContainer}>
                   <View style={styles.imageContainer}>
-                    <Image
-                      style={styles.image}
-                      source={{
-                        uri: `${item.thumbnail.path}.${item.thumbnail.extension}`,
-                      }}
-                    />
+                    {isNotAvaliable(item.thumbnail.path) ? (
+                      <Image style={styles.image} source={DefaltImg} />
+                    ) : (
+                      <Image
+                        style={styles.image}
+                        source={{
+                          uri: `${item.thumbnail.path}.${item.thumbnail.extension}`,
+                        }}
+                      />
+                    )}
                     <View style={styles.gradientOverlay}></View>
                     <Text
                       style={styles.nameItems}
@@ -308,12 +354,16 @@ export default function Home() {
               >
                 <View key={item.id} style={styles.itemContainer}>
                   <View style={styles.imageContainer}>
-                    <Image
-                      style={styles.image}
-                      source={{
-                        uri: `${item.thumbnail.path}.${item.thumbnail.extension}`,
-                      }}
-                    />
+                    {isNotAvaliable(item.thumbnail.path) ? (
+                      <Image style={styles.image} source={DefaltImg} />
+                    ) : (
+                      <Image
+                        style={styles.image}
+                        source={{
+                          uri: `${item.thumbnail.path}.${item.thumbnail.extension}`,
+                        }}
+                      />
+                    )}
                     <View style={styles.gradientOverlay}></View>
                     <Text
                       style={styles.nameItems}
