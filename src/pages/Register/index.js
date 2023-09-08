@@ -234,7 +234,7 @@ export default function Register() {
                           onFocus={() => handleInputFocus('password')}
                           onBlur={handleInputBlur}
                           value={password}
-                          secureTextEntry
+                          secureTextEntry={!passwordVisible}
                         />
                         <TouchableOpacity
                           onPress={() => setPasswordVisible(!passwordVisible)}
@@ -295,7 +295,7 @@ export default function Register() {
                           onFocus={() => handleInputFocus('confirmPassword')}
                           onBlur={handleInputBlur}
                           value={confirmPassword}
-                          secureTextEntry
+                          secureTextEntry={!passwordVisible}
                         />
                         <TouchableOpacity
                           onPress={() => setPasswordVisible(!passwordVisible)}
