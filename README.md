@@ -42,7 +42,7 @@ Este projeto representa um teste de uma aplicação que utiliza React Native par
 * [Javascript](https://www.javascript.com/)
 * [Node.js](https://nodejs.org/en/)
 * [React Native](https://reactnative.dev/)
-* [Expo]([https://reactnative.dev/](https://docs.expo.dev/get-started/installation/))
+* [Expo](https://docs.expo.dev/get-started/installation/)
 
 ### :art: Layout
 
