@@ -30,7 +30,7 @@
 * [Instalação](#bricks-instalação)
   * [Requisitos](#construction-requisitos)
   * [Instalação de dependências](#construction-instalando-dependencias)
-  * [Running](#arrow_forward-running)
+  * [Execução](#arrow_forward-running)
 
 ## :book: Sobre o projeto
 
@@ -93,5 +93,5 @@ $ yarn start
 ```
 
 ### 🚨 Login 
-- E-mail: pier@gmail.com
-- Senha: pier123
+- E-mail: teste@gmail.com
+- Senha: teste123
