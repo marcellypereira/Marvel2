@@ -42,6 +42,7 @@ Este projeto representa um teste de uma aplicação que utiliza React Native par
 * [Javascript](https://www.javascript.com/)
 * [Node.js](https://nodejs.org/en/)
 * [React Native](https://reactnative.dev/)
+* [Expo](https://docs.expo.dev/get-started/installation/)
 
 ### :art: Layout
 
@@ -52,12 +53,12 @@ Você pode acessar o layout do projeto no link abaixo:
 
 
 ### :construction: Requisitos
-- Any Operating System having [react-native-cli](https://reactnative.dev/docs/environment-setup) installed.
-- To make build your computer should have Android studio installed for android or Xcode for ios.
+- Qualquer sistema operacional com 
+ [react-native-cli](https://reactnative.dev/docs/environment-setup) instalado.
 
 ## :bricks: Instalação
 
-ESte projeto usa [Node.js](https://nodejs.org/en/) e [npm](https://www.npmjs.com/), você precisará deles para construir suas dependências.
+Este projeto usa [Node.js](https://nodejs.org/en/) e [npm](https://www.npmjs.com/), você precisará deles para construir suas dependências.
 
 
 Clone este repositório do projeto:
@@ -85,8 +86,12 @@ $ yarn install
 
 ### :arrow_forward: Running
 
-Run following command to start back-end:
+Execute o seguinte comando para iniciar:
 
 ```bash
 $ yarn start
 ```
+
+### 🚨 Login 
+- E-mail: pier@gmail.com
+- Senha: pier123
