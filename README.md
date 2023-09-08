@@ -42,6 +42,7 @@ Este projeto representa um teste de uma aplicação que utiliza React Native par
 * [Javascript](https://www.javascript.com/)
 * [Node.js](https://nodejs.org/en/)
 * [Expo](https://docs.expo.dev/get-started/installation/)
+* [Expo Go](https://expo.dev/client)
 
 ### :art: Layout
 
@@ -86,6 +87,10 @@ Execute o seguinte comando para iniciar:
 $ yarn start
 ```
 
+* Logo em seguida, abrirá um QR code que você deverá escanear após baixar o Expo Go (o link está disponível na documentação).
+
 ### 🚨 Login 
 - E-mail: teste@teste.com
 - Senha: teste123
+
+
