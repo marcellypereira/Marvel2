@@ -30,7 +30,7 @@
 * [Instalação](#bricks-instalação)
   * [Requisitos](#construction-requisitos)
   * [Instalação de dependências](#construction-instalando-dependencias)
-  * [Running](#arrow_forward-running)
+  * [Execução](#arrow_forward-running)
 
 ## :book: Sobre o projeto
 
@@ -41,8 +41,8 @@ Este projeto representa um teste de uma aplicação que utiliza React Native par
 
 * [Javascript](https://www.javascript.com/)
 * [Node.js](https://nodejs.org/en/)
-* [React Native](https://reactnative.dev/)
 * [Expo](https://docs.expo.dev/get-started/installation/)
+* [Expo Go](https://expo.dev/client)
 
 ### :art: Layout
 
@@ -50,11 +50,6 @@ Você pode acessar o layout do projeto no link abaixo:
 
 * [Layout](https://www.figma.com/file/U05pXQdE3iHtKMN1QLQyl8/Teste-de-Desenvolvimento-Pontua-Mobile-(Copy)?type=design&node-id=2773-301&mode=design&t=QvWWwF8fqtmH4Q3y-0)
 * 🚨 Você precisa ter uma conta no [Figma](https://www.figma.com) para cessar o layout.
-
-
-### :construction: Requisitos
-- Qualquer sistema operacional com 
- [react-native-cli](https://reactnative.dev/docs/environment-setup) instalado.
 
 ## :bricks: Instalação
 
@@ -84,7 +79,7 @@ $ yarn install
 ```
 
 
-### :arrow_forward: Running
+### :arrow_forward: Execução
 
 Execute o seguinte comando para iniciar:
 
@@ -92,6 +87,10 @@ Execute o seguinte comando para iniciar:
 $ yarn start
 ```
 
+* Logo em seguida, abrirá um QR code que você deverá escanear após baixar o Expo Go (o link está disponível na documentação).
+
 ### 🚨 Login 
-- E-mail: pier@gmail.com
-- Senha: pier123
+- E-mail: teste@teste.com
+- Senha: teste123
+
+
