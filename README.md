@@ -93,5 +93,5 @@ $ yarn start
 ```
 
 ### 🚨 Login 
-- E-mail: teste@gmail.com
+- E-mail: teste@teste.com
 - Senha: teste123
