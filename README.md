@@ -79,7 +79,7 @@ $ yarn install
 ```
 
 
-### :arrow_forward: Running
+### :arrow_forward: Execução
 
 Execute o seguinte comando para iniciar:
 
