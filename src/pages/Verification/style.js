@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { CustomStyles } from '../../CustomStyles';
 
 export default StyleSheet.create({
   container: {
@@ -59,12 +60,12 @@ export default StyleSheet.create({
   subTitle: {
     alignSelf: 'center',
     textAlign: 'center',
-    color: '#A4A4A4',
+    color: CustomStyles.DarkGrayColor,
     maxWidth: 280,
     marginTop: '2%',
   },
   label: {
-    color: '#A4A4A4',
+    color: CustomStyles.DarkGrayColor,
     marginTop: '7%',
     marginBottom: '4%',
     marginLeft: '6%',
@@ -76,12 +77,12 @@ export default StyleSheet.create({
   },
   code: {
     borderWidth: 1,
-    borderColor: '#A4A4A4',
+    borderColor: CustomStyles.DarkGrayColor,
     borderRadius: 8,
     width: 50,
     height: 50,
     textAlign: 'center',
-    color: '#A4A4A4',
+    color: CustomStyles.DarkGrayColor,
     fontSize: 18,
     fontWeight: 'bold',
   },
@@ -95,6 +96,6 @@ export default StyleSheet.create({
     marginBottom: '8%',
   },
   CodeText: {
-    color: '#A4A4A4',
+    color: CustomStyles.DarkGrayColor,
   },
 });

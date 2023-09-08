@@ -13,6 +13,7 @@ import GradientButton from '../../components/GradientButton';
 import styles from './style';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { CustomStyles } from '../../CustomStyles';
 
 export default function Register() {
   const navigation = useNavigation();
@@ -121,10 +122,10 @@ export default function Register() {
                         {
                           borderColor:
                             focusedInput === 'email'
-                              ? '#4F4F4F'
+                              ? CustomStyles.Grey24Color
                               : isEmailValid
-                              ? '#4F4F4F'
-                              : '#ED1D2F',
+                              ? CustomStyles.Grey24Color
+                              : CustomStyles.DarkRedColor,
                         },
                       ]}
                     >
@@ -134,13 +135,17 @@ export default function Register() {
                           size={20}
                           style={[
                             styles.icon,
-                            focusedInput === 'email' && { color: '#04D361' },
-                            !isEmailValid && { color: '#ED1D2F' },
+                            focusedInput === 'email' && {
+                              color: CustomStyles.SpringGreenColor,
+                            },
+                            !isEmailValid && {
+                              color: CustomStyles.DarkRedColor,
+                            },
                           ]}
                         />
                         <TextInput
                           style={styles.input}
-                          placeholderTextColor="#A4A4A4"
+                          placeholderTextColor={CustomStyles.DarkGrayColor}
                           placeholder="tecnologia@pontua.com.br"
                           onChangeText={validateEmail}
                           onFocus={() => handleInputFocus('email')}
@@ -149,7 +154,7 @@ export default function Register() {
                         />
                         {!isEmailValid && focusedInput === 'email' && (
                           <Text style={styles.invalidMessage}>
-                            E-mail inválido
+                            e-mail inválido
                           </Text>
                         )}
                       </View>
@@ -165,10 +170,10 @@ export default function Register() {
                         {
                           borderColor:
                             focusedInput === 'name'
-                              ? '#4F4F4F'
+                              ? CustomStyles.Grey24Color
                               : isNameValid
-                              ? '#4F4F4F'
-                              : '#ED1D2F',
+                              ? CustomStyles.Grey24Color
+                              : CustomStyles.DarkRedColor,
                         },
                       ]}
                     >
@@ -178,14 +183,18 @@ export default function Register() {
                           size={20}
                           style={[
                             styles.icon,
-                            focusedInput === 'name' && { color: '#04D361' },
-                            !isNameValid && { color: '#ED1D2F' },
+                            focusedInput === 'name' && {
+                              color: CustomStyles.SpringGreenColor,
+                            },
+                            !isNameValid && {
+                              color: CustomStyles.DarkRedColor,
+                            },
                           ]}
                         />
                         <TextInput
                           style={styles.input}
                           placeholder="Pontua Tecnologia"
-                          placeholderTextColor="#A4A4A4"
+                          placeholderTextColor={CustomStyles.DarkGrayColor}
                           onChangeText={validateName}
                           onFocus={() => handleInputFocus('name')}
                           onBlur={handleInputBlur}
@@ -193,7 +202,7 @@ export default function Register() {
                         />
                         {!isNameValid && focusedInput === 'name' && (
                           <Text style={styles.invalidMessage}>
-                            Nome inválido
+                            nome inválido
                           </Text>
                         )}
                       </View>
@@ -209,10 +218,10 @@ export default function Register() {
                         {
                           borderColor:
                             focusedInput === 'password'
-                              ? '#4F4F4F'
+                              ? CustomStyles.Grey24Color
                               : isPasswordValid
-                              ? '#4F4F4F'
-                              : '#ED1D2F',
+                              ? CustomStyles.Grey24Color
+                              : CustomStyles.DarkRedColor,
                         },
                       ]}
                     >
@@ -222,14 +231,18 @@ export default function Register() {
                           size={20}
                           style={[
                             styles.icon,
-                            focusedInput === 'password' && { color: '#04D361' },
-                            !isPasswordValid && { color: '#ED1D2F' },
+                            focusedInput === 'password' && {
+                              color: CustomStyles.SpringGreenColor,
+                            },
+                            !isPasswordValid && {
+                              color: CustomStyles.DarkRedColor,
+                            },
                           ]}
                         />
                         <TextInput
                           style={styles.input}
                           placeholder="senha"
-                          placeholderTextColor="#A4A4A4"
+                          placeholderTextColor={CustomStyles.DarkGrayColor}
                           onChangeText={validatePassword}
                           onFocus={() => handleInputFocus('password')}
                           onBlur={handleInputBlur}
@@ -252,7 +265,7 @@ export default function Register() {
                         </TouchableOpacity>
                         {!isPasswordValid && focusedInput === 'password' && (
                           <Text style={styles.invalidMessage}>
-                            Senha inválida
+                            senha inválida
                           </Text>
                         )}
                       </View>
@@ -268,10 +281,10 @@ export default function Register() {
                         {
                           borderColor:
                             focusedInput === 'confirmPassword'
-                              ? '#4F4F4F'
+                              ? CustomStyles.Grey24Color
                               : isPasswordMatch
-                              ? '#4F4F4F'
-                              : '#ED1D2F',
+                              ? CustomStyles.Grey24Color
+                              : CustomStyles.DarkRedColor,
                         },
                       ]}
                     >
@@ -282,15 +295,17 @@ export default function Register() {
                           style={[
                             styles.icon,
                             focusedInput === 'confirmPassword' && {
-                              color: '#04D361',
+                              color: CustomStyles.SpringGreenColor,
                             },
-                            !isPasswordMatch && { color: '#ED1D2F' },
+                            !isPasswordMatch && {
+                              color: CustomStyles.DarkRedColor,
+                            },
                           ]}
                         />
                         <TextInput
                           style={styles.input}
                           placeholder="confirmação da Senha"
-                          placeholderTextColor="#A4A4A4"
+                          placeholderTextColor={CustomStyles.DarkGrayColor}
                           onChangeText={validatePasswordMatch}
                           onFocus={() => handleInputFocus('confirmPassword')}
                           onBlur={handleInputBlur}
@@ -314,7 +329,7 @@ export default function Register() {
                         {!isPasswordMatch &&
                           focusedInput === 'confirmPassword' && (
                             <Text style={styles.invalidMessage}>
-                              Senhas não coincidem
+                              senhas não coincidem
                             </Text>
                           )}
                       </View>
@@ -323,7 +338,10 @@ export default function Register() {
                 </View>
                 <GradientButton
                   title="cadastrar"
-                  colors={['#ED1D2F', '#BF2EB9']}
+                  colors={[
+                    CustomStyles.DarkRedColor,
+                    CustomStyles.DarkMagentaColor,
+                  ]}
                   onPress={handleRegister}
                 />
               </View>

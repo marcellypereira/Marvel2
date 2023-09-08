@@ -12,6 +12,7 @@ import styles from './style';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 import * as Notifications from 'expo-notifications';
+import { CustomStyles } from '../../CustomStyles';
 
 export default function Verification() {
   const numFields = 4;
@@ -98,7 +99,7 @@ export default function Verification() {
   const handleVerifyCode = () => {
     const isAllFieldsFilled = verificationCodes.every((code) => code !== '');
     if (isAllFieldsFilled) {
-      navigation.navigate('Password'); // Substitua 'Password' pelo nome correto da tela de senha
+      navigation.navigate('Password');
     }
   };
 
@@ -133,9 +134,7 @@ export default function Verification() {
           />
         </View>
         <View style={styles.overlayContainer}>
-          <ScrollView
-            showsVerticalScrollIndicator={false}
-          >
+          <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.overlayContent}>
               <View style={styles.viewTitle}>
                 <Text style={styles.title}>Verificação de identidade</Text>
@@ -177,7 +176,10 @@ export default function Verification() {
                 </TouchableOpacity>
                 <GradientButton
                   title="verificar código"
-                  colors={['#ED1D2F', '#BF2EB9']}
+                  colors={[
+                    CustomStyles.DarkRedColor,
+                    CustomStyles.DarkMagentaColor,
+                  ]}
                   style={styles.inputRegister}
                   onPress={handleVerifyCode}
                 />

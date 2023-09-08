@@ -13,15 +13,19 @@ import { LinearGradient } from 'expo-linear-gradient';
 import styles from './style';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { CustomStyles } from '../../CustomStyles';
 
 export default function Connect() {
   const navigation = useNavigation();
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  const [emailIconColor, setEmailIconColor] = useState('#A4A4A4');
-  const [passwordIconColor, setPasswordIconColor] = useState('#A4A4A4');
+  const [emailIconColor, setEmailIconColor] = useState(
+    CustomStyles.DarkGrayColor,
+  );
+  const [passwordIconColor, setPasswordIconColor] = useState(
+    CustomStyles.DarkGrayColor,
+  );
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [storedPassword, setStoredPassword] = useState('');
@@ -44,26 +48,34 @@ export default function Connect() {
   const handlePressForgort = () => {
     navigation.navigate('Forgot');
   };
+
+  const handleEmailChange = (text) => {
+    setEmail(text);
+    setEmailError(false);
+  };
+
+  const handlePasswordChange = (text) => {
+    setPassword(text);
+    setPasswordError(false);
+  };
+
   const handleLogin = async () => {
     const registeredPassword = await AsyncStorage.getItem('registeredPassword');
 
-    if (password === registeredPassword) {
+    if (email === 'teste@teste.com') {
+      if (password === 'teste123') {
+        navigation.navigate('Home');
+      } else {
+        setPasswordError(true);
+      }
+    } else if (password === registeredPassword) {
+      setPasswordError(false);
       navigation.navigate('Home');
     } else {
+      setEmailError(true);
       setPasswordError(true);
     }
   };
-
-  useEffect(() => {
-    const fetchStoredPassword = async () => {
-      const newPassword = await AsyncStorage.getItem('novaSenha');
-      if (newPassword) {
-        setStoredPassword(newPassword);
-      }
-    };
-
-    fetchStoredPassword();
-  }, []);
 
   return (
     <View style={styles.container}>
@@ -92,7 +104,7 @@ export default function Connect() {
         </View>
 
         <View style={styles.overlayContainer}>
-          <ScrollView showsHorizontalScrollIndicator={false}>
+          <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.overlayContent}>
               <View style={styles.viewContainer}>
                 <View style={styles.viewTitle}>
@@ -116,32 +128,40 @@ export default function Connect() {
                             style={[
                               styles.icon,
                               {
-                                color: emailError ? '#ED1D2F' : emailIconColor,
+                                color: emailError
+                                  ? CustomStyles.DarkRedColor
+                                  : emailIconColor,
                               },
                             ]}
                           />
                           <TextInput
                             style={styles.input}
                             placeholder="tecnologia@pontua.com.br"
-                            placeholderTextColor="#A4A4A4"
+                            placeholderTextColor={CustomStyles.DarkGrayColor}
                             onChangeText={(text) => {
                               setEmail(text);
                               setEmailIconColor(
-                                emailError ? '#ED1D2F' : '#04D361',
+                                emailError
+                                  ? CustomStyles.DarkRedColor
+                                  : CustomStyles.SpringGreenColor,
                               );
                               setEmailError(false);
                             }}
-                            onFocus={() => setEmailIconColor('#04D361')}
+                            onFocus={() =>
+                              setEmailIconColor(CustomStyles.SpringGreenColor)
+                            }
                             onBlur={() =>
                               setEmailIconColor(
-                                emailError ? '#ED1D2F' : '#A4A4A4',
+                                emailError
+                                  ? CustomStyles.DarkRedColor
+                                  : CustomStyles.DarkGrayColor,
                               )
                             }
                           />
                         </View>
                       </LinearGradient>
                       {emailError && (
-                        <Text style={styles.errorText}>Campo inválido</Text>
+                        <Text style={styles.errorText}>e-mail incorreto</Text>
                       )}
                     </View>
                     <Text style={styles.label}>Senha</Text>
@@ -160,7 +180,7 @@ export default function Connect() {
                               styles.icon,
                               {
                                 color: passwordError
-                                  ? '#ED1D2F'
+                                  ? CustomStyles.DarkRedColor
                                   : passwordIconColor,
                               },
                             ]}
@@ -168,19 +188,27 @@ export default function Connect() {
                           <TextInput
                             style={styles.input}
                             placeholder="senha"
-                            placeholderTextColor="#A4A4A4"
+                            placeholderTextColor={CustomStyles.DarkGrayColor}
                             secureTextEntry={!passwordVisible}
                             onChangeText={(text) => {
                               setPassword(text);
                               setPasswordIconColor(
-                                passwordError ? '#ED1D2F' : '#04D361',
+                                passwordError
+                                  ? CustomStyles.DarkRedColor
+                                  : CustomStyles.SpringGreenColor,
                               );
                               setPasswordError(false);
                             }}
-                            onFocus={() => setPasswordIconColor('#04D361')}
+                            onFocus={() =>
+                              setPasswordIconColor(
+                                CustomStyles.SpringGreenColor,
+                              )
+                            }
                             onBlur={() =>
                               setPasswordIconColor(
-                                passwordError ? '#ED1D2F' : '#A4A4A4',
+                                passwordError
+                                  ? CustomStyles.DarkRedColor
+                                  : CustomStyles.DarkGrayColor,
                               )
                             }
                           />
@@ -202,7 +230,7 @@ export default function Connect() {
                       </TouchableOpacity>
                     </View>
                     {passwordError && (
-                      <Text style={styles.errorText}>Campo inválido</Text>
+                      <Text style={styles.errorText}>senha incorreta</Text>
                     )}
                   </View>
                 </View>
@@ -215,7 +243,10 @@ export default function Connect() {
                 </View>
                 <GradientButton
                   title="entrar"
-                  colors={['#ED1D2F', '#BF2EB9']}
+                  colors={[
+                    CustomStyles.DarkRedColor,
+                    CustomStyles.DarkMagentaColor,
+                  ]}
                   onPress={handleLogin}
                 />
                 <View style={styles.containerLine}>
@@ -293,7 +324,10 @@ export default function Connect() {
                 </View>
                 <GradientButton
                   title="cadastrar"
-                  colors={['#ED1D2F', '#BF2EB9']}
+                  colors={[
+                    CustomStyles.DarkRedColor,
+                    CustomStyles.DarkMagentaColor,
+                  ]}
                   onPress={handlePress}
                 />
               </View>

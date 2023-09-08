@@ -5,6 +5,7 @@ import { Feather } from '@expo/vector-icons';
 import GradientButton from '../../components/GradientButton';
 import { useNavigation } from '@react-navigation/native';
 import styles from './style';
+import { CustomStyles } from '../../CustomStyles';
 
 export default function Forgot() {
   const [email, setEmail] = useState('');
@@ -15,17 +16,17 @@ export default function Forgot() {
   const navigation = useNavigation();
 
   const handlePressVerification = () => {
-    navigation.navigate('Verification');
+    if (validateEmail(email)) {
+      navigation.navigate('Verification');
+    } else {
+      setIsValidEmail(false);
+      setButtonClicked(true);
+    }
   };
 
   const validateEmail = (email) => {
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     return emailRegex.test(email);
-  };
-
-  const handleEmailChange = (newEmail) => {
-    setEmail(newEmail);
-    setIsValidEmail(validateEmail(newEmail));
   };
 
   const handleInputFocus = () => {
@@ -34,6 +35,13 @@ export default function Forgot() {
 
   const handleInputBlur = () => {
     setIsFocused(false);
+  };
+
+  const handleEmailChange = (newEmail) => {
+    setEmail(newEmail);
+    if (!isValidEmail) {
+      setIsValidEmail(true);
+    }
   };
 
   return (
@@ -63,9 +71,7 @@ export default function Forgot() {
         </View>
 
         <View style={styles.overlayContainer}>
-          <ScrollView
-            showsVerticalScrollIndicator={false}
-          >
+          <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.overlayContent}>
               <View style={styles.viewTitle}>
                 <Text style={styles.title}>Esqueci minha senha</Text>
@@ -82,7 +88,9 @@ export default function Forgot() {
                         styles.inputContainer,
                         !isValidEmail && styles.invalidInput,
                         (isFocused || buttonClicked) &&
-                          !isValidEmail && { borderColor: '#ED1D2F' },
+                          !isValidEmail && {
+                            borderColor: CustomStyles.DarkRedColor,
+                          },
                       ]}
                     >
                       <LinearGradient
@@ -97,27 +105,31 @@ export default function Forgot() {
                             size={20}
                             style={[
                               styles.icon,
-                              !isValidEmail && styles.invalidIcon,
                               (isFocused || buttonClicked) && {
-                                color: isValidEmail ? '#04D361' : '#ED1D2F',
+                                color: isValidEmail
+                                  ? CustomStyles.SpringGreenColor
+                                  : CustomStyles.DarkRedColor,
                               },
                             ]}
                           />
-                          <TextInput
-                            style={[
-                              styles.input,
-                              !isValidEmail && styles.invalidInput,
-                              (isFocused || buttonClicked) &&
-                                !isValidEmail && { borderColor: '#ED1D2F' },
-                            ]}
-                            placeholder="tecnologia@pontua.com.br"
-                            placeholderTextColor="#A4A4A4"
-                            value={email}
-                            onChangeText={handleEmailChange}
-                            onFocus={handleInputFocus}
-                            onBlur={handleInputBlur}
-                            autoFocus
-                          />
+                          <View style={styles.inputWrapper}>
+                            <TextInput
+                              style={[
+                                styles.input,
+                                !isValidEmail && styles.invalidInput,
+                                (isFocused || buttonClicked) &&
+                                  !isValidEmail && {
+                                    borderColor: CustomStyles.DarkRedColor,
+                                  },
+                              ]}
+                              placeholder="tecnologia@pontua.com.br"
+                              placeholderTextColor={CustomStyles.DarkGrayColor}
+                              value={email}
+                              onChangeText={handleEmailChange}
+                              onFocus={handleInputFocus}
+                              onBlur={handleInputBlur}
+                            />
+                          </View>
                         </View>
                       </LinearGradient>
                     </View>
@@ -131,10 +143,27 @@ export default function Forgot() {
                   </View>
                 </View>
                 <GradientButton
-                  title="enviar código"
-                  colors={['#ED1D2F', '#BF2EB9']}
+                  title="Enviar código"
+                  colors={[
+                    CustomStyles.DarkRedColor,
+                    CustomStyles.DarkMagentaColor,
+                  ]}
                   style={styles.inputRegister}
                   onPress={handlePressVerification}
+                  icon={
+                    <Feather
+                      name="at-sign"
+                      size={20}
+                      style={[
+                        styles.icon,
+                        (isFocused || buttonClicked) && {
+                          color: isValidEmail
+                            ? CustomStyles.SpringGreenColor
+                            : CustomStyles.DarkRedColor,
+                        },
+                      ]}
+                    />
+                  }
                 />
               </View>
             </View>

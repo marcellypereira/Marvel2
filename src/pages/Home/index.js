@@ -77,9 +77,7 @@ export default function Home() {
 
   return (
     <View style={styles.container}>
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-      >
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.containerInfosTitle}>
           <TouchableOpacity style={styles.btnSearch} onPress={abrirModal}>
             <Icon name="search" size={20} />

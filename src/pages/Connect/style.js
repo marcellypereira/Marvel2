@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { CustomStyles } from '../../CustomStyles';
 
 export default StyleSheet.create({
   container: {
@@ -58,17 +59,17 @@ export default StyleSheet.create({
   subTitle: {
     textAlign: 'center',
     alignSelf: 'center',
-    color: '#A4A4A4',
+    color: CustomStyles.DarkGrayColor,
     marginTop: '2%',
   },
   label: {
-    color: '#A4A4A4',
+    color: CustomStyles.DarkGrayColor,
     marginTop: '2%',
   },
   labelContainer: {
     borderWidth: 0.5,
     borderRadius: 8,
-    borderColor: '#696969',
+    borderColor: CustomStyles.DimGrayColor,
     paddingHorizontal: 10,
     marginTop: 8,
     width: 330,
@@ -84,7 +85,7 @@ export default StyleSheet.create({
     flex: 1,
   },
   icon: {
-    color: '#A4A4A4',
+    color: CustomStyles.DarkGrayColor,
     marginRight: '3%',
   },
   passwordInputContainer: {
@@ -102,7 +103,7 @@ export default StyleSheet.create({
     fontWeight: 500,
   },
   forgot: {
-    color: '#A4A4A4',
+    color: CustomStyles.DarkGrayColor,
     marginTop: '17%',
   },
   containerLine: {
@@ -120,7 +121,7 @@ export default StyleSheet.create({
     backgroundColor: 'transparent',
   },
   textLine: {
-    color: '#A4A4A4',
+    color: CustomStyles.DarkGrayColor,
     marginHorizontal: 10,
   },
   socialNetwork: {
@@ -131,7 +132,7 @@ export default StyleSheet.create({
   containerSocial: {
     borderWidth: 0.5,
     borderRadius: 8,
-    borderColor: '#696969',
+    borderColor:  CustomStyles.DimGrayColor,
     width: 60,
     height: 50,
     borderRadius: 8,
@@ -148,7 +149,7 @@ export default StyleSheet.create({
     position: 'absolute',
     right: 4,
     top: '100%',
-    color: '#ED1D2F',
+    color: CustomStyles.DarkRedColor,
     fontSize: 12,
   },
 });

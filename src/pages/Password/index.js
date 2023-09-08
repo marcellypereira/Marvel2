@@ -11,8 +11,8 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Feather, Ionicons } from '@expo/vector-icons';
 import GradientButton from '../../components/GradientButton';
 import { useNavigation } from '@react-navigation/native';
-import AsyncStorage from '@react-native-async-storage/async-storage'; // Importe o AsyncStorage
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { CustomStyles } from '../../CustomStyles';
 import styles from './style';
 
 export default function Password() {
@@ -28,7 +28,7 @@ export default function Password() {
 
   const validatePassword = () => {
     if (password.length < 6) {
-      setPasswordError('Senha inválida');
+      setPasswordError('senha inválida');
     } else {
       setPasswordError('');
     }
@@ -36,7 +36,7 @@ export default function Password() {
 
   const validateConfirmPassword = () => {
     if (confirmPassword !== password) {
-      setConfirmPasswordError('As senhas não coincidem');
+      setConfirmPasswordError('as senhas não coincidem');
     } else {
       setConfirmPasswordError('');
     }
@@ -89,9 +89,7 @@ export default function Password() {
         </View>
 
         <View style={styles.overlayContainer}>
-          <ScrollView
-            showsVerticalScrollIndicator={false}
-          >
+          <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.overlayContent}>
               <View style={styles.viewTitle}>
                 <Text style={styles.title}>Redefinição de Senha</Text>
@@ -117,16 +115,16 @@ export default function Password() {
                               styles.icon,
                               {
                                 color: isPasswordInputFocused
-                                  ? '#04D361'
+                                  ? CustomStyles.SpringGreenColor
                                   : passwordError
-                                  ? '#ED1D2F'
-                                  : '#A4A4A4',
+                                  ? CustomStyles.DarkRedColor
+                                  : CustomStyles.DarkGrayColor,
                               },
                             ]}
                           />
                           <TextInput
                             style={styles.input}
-                            placeholderTextColor="#A4A4A4"
+                            placeholderTextColor={CustomStyles.DarkGrayColor}
                             placeholder="Senha"
                             secureTextEntry={!passwordVisible}
                             value={password}
@@ -155,9 +153,7 @@ export default function Password() {
                       </LinearGradient>
 
                       {passwordError ? (
-                        <Text style={[styles.errorText, { color: '#ED1D2F' }]}>
-                          {passwordError}
-                        </Text>
+                        <Text style={styles.errorText}>{passwordError}</Text>
                       ) : null}
                     </View>
                     <Text style={styles.label}>Confirmação da nova senha</Text>
@@ -175,16 +171,16 @@ export default function Password() {
                             styles.icon,
                             {
                               color: isConfirmPasswordInputFocused
-                                ? '#04D361'
+                                ? CustomStyles.SpringGreenColor
                                 : confirmPasswordError
-                                ? '#ED1D2F'
-                                : '#A4A4A4',
+                                ? CustomStyles.DarkRedColor
+                                : CustomStyles.DarkGrayColor,
                             },
                           ]}
                         />
                         <TextInput
                           style={styles.input}
-                          placeholderTextColor="#A4A4A4"
+                          placeholderTextColor={CustomStyles.DarkGrayColor}
                           placeholder="Confirmação da nova senha"
                           secureTextEntry={!passwordVisible}
                           value={confirmPassword}
@@ -213,7 +209,7 @@ export default function Password() {
                     </LinearGradient>
 
                     {confirmPasswordError ? (
-                      <Text style={[styles.errorText, { color: '#ED1D2F' }]}>
+                      <Text style={styles.errorText}>
                         {confirmPasswordError}
                       </Text>
                     ) : null}
@@ -223,7 +219,10 @@ export default function Password() {
             </View>
             <GradientButton
               title="Criar nova senha"
-              colors={['#ED1D2F', '#BF2EB9']}
+              colors={[
+                CustomStyles.DarkRedColor,
+                CustomStyles.DarkMagentaColor,
+              ]}
               onPress={handleCreatePassword}
             />
           </ScrollView>
