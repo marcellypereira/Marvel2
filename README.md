@@ -50,11 +50,6 @@ Você pode acessar o layout do projeto no link abaixo:
 * [Layout](https://www.figma.com/file/U05pXQdE3iHtKMN1QLQyl8/Teste-de-Desenvolvimento-Pontua-Mobile-(Copy)?type=design&node-id=2773-301&mode=design&t=QvWWwF8fqtmH4Q3y-0)
 * 🚨 Você precisa ter uma conta no [Figma](https://www.figma.com) para cessar o layout.
 
-
-### :construction: Requisitos
-- Qualquer sistema operacional com 
- [react-native-cli](https://reactnative.dev/docs/environment-setup) instalado.
-
 ## :bricks: Instalação
 
 Este projeto usa [Node.js](https://nodejs.org/en/) e [npm](https://www.npmjs.com/), você precisará deles para construir suas dependências.
