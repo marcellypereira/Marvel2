@@ -10,11 +10,11 @@
 <div align="center">
   <table>
     <tr>
-      <td><img src="https://github.com/marcellypereira/Marvel2/assets/116754560/cd13129b-c1ee-4038-80af-512f2e6bd451" alt="Logo" /></td>
-      <td><img src="https://github.com/marcellypereira/Marvel2/assets/116754560/b1d6d20a-cf91-4fd9-aed9-17c594e73154" alt="Logo" /></td>
-       <td><img src="https://github.com/marcellypereira/Marvel2/assets/116754560/36329ed5-2e09-464f-83d8-b8f8ddc7654d" alt="Logo" /></td>
-      <td><img src="https://github.com/marcellypereira/Marvel2/assets/116754560/5c2fee8f-0a72-4bbb-970b-28d0e78a96ba" alt="Logo" /></td>
-      <td><img src="https://github.com/marcellypereira/Marvel2/assets/116754560/e933668f-4798-4d03-96de-4337d4a95c58" alt="Logo" /></td>
+      <td><img src="https://github.com/marcellypereira/Marvel2/assets/116754560/d9f4921f-0bfd-4647-9443-6b2d2c79cc6c" alt="Logo" /></td>
+      <td><img src="https://github.com/marcellypereira/Marvel2/assets/116754560/a5853926-0bf5-49eb-ae31-e2a29666b9b1" alt="Logo" /></td>
+       <td><img src="https://github.com/marcellypereira/Marvel2/assets/116754560/c658546d-f5d6-450b-8fbf-3a54118c3843" alt="Logo" /></td>
+      <td><img src="https://github.com/marcellypereira/Marvel2/assets/116754560/b885ed6c-c7b8-4614-b2af-f3dea5e03207" alt="Logo" /></td>
+      <td><img src="https://github.com/marcellypereira/Marvel2/assets/116754560/75ab2ccd-460c-4869-97bb-d38af1f2a87e" alt="Logo" /></td>
      
  </tr>
   </table>
