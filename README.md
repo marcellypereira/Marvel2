@@ -1,7 +1,7 @@
 
   <h3 align="center">MARVEL</h3>
   <p align="center">
-    Este aplicativo foi desenvolvido para um teste.
+    Este aplicativo foi desenvolvido como um projeto de estudo.
     <br />
     <br />
   </p>
